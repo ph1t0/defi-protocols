@@ -22,7 +22,7 @@ jobs:
       - name: Run tests
         run: |
           pip install -r requirements-dev.txt
-          cat defi-protocols/config.json |\
+          cat defi_protocols/config.json |\
             jq --arg node_eth $NODE_ETH '.nodes.ethereum.latest = $node_eth' \
             > /tmp/tmp_config.json
           PYTHONPATH=${PYTHONPATH}:. CONFIG_PATH=/tmp/tmp_config.json pytest -vs
