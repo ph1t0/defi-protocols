@@ -3,7 +3,7 @@ name: Defi Protocols
 on: [push]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
@@ -25,4 +25,5 @@ jobs:
           cat defi_protocols/config.json |\
             jq --arg node_eth $NODE_ETH '.nodes.ethereum.latest = $node_eth' \
             > /tmp/tmp_config.json
-          PYTHONPATH=${PYTHONPATH}:. CONFIG_PATH=/tmp/tmp_config.json pytest -vs
+          cat /tmp/tmp_config.json
+            #PYTHONPATH=${PYTHONPATH}:. CONFIG_PATH=/tmp/tmp_config.json pytest -vs
